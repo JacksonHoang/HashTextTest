@@ -2,25 +2,22 @@
 We use the API Message Digest and we implementthe SHA-256 Algorithm, hashing any string to eight blocks of 32 bits each, resulting in 256 bit hash value.
 
 
-
-
-
-
 import java.security.MessageDigest; import java.security.NoSuchAlgorithmException;
+
 
 public class HashTextTest {
 
-public static void main(String[] args) throws NoSuchAlgorithmException 
-{
-    System.out.println(sha256("Write anything here to have it hashed!!!"));
-
-}
+    public static void main(String[] args) throws NoSuchAlgorithmException 
+        {
+            System.out.println(sha256("Write anything here to have it hashed!!!"));
+        }
+        
 public static String sha256(String base) {
+
     try{
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(base.getBytes("UTF-8"));
         StringBuffer hexString = new StringBuffer();
-
 
         for (int i = 0; i < hash.length; i++) {
             String hex = Integer.toHexString(0xff & hash[i]);
@@ -29,8 +26,8 @@ public static String sha256(String base) {
         }
 
         return hexString.toString();
-    } catch(Exception ex){
-       throw new RuntimeException(ex);
+         } catch(Exception ex){
+         throw new RuntimeException(ex);
+        }
     }
-}
 }
